@@ -1,15 +1,66 @@
 {
-  "name": "Barberaria 96",
+  "name": "Barberaria 96 - Professional Barbering Services",
   "short_name": "Barberaria 96",
-  "description": "Barberaria 96 - Professional barbering services in Jönköping. Book your appointment online.",
+  "description": "Barberaria 96 - Professional barbering services in Jönköping. Book your appointment online with Sweden's premier barber shop.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "theme_color": "#1A1A1A",
   "background_color": "#1A1A1A",
-  "lang": "sv",
-  "categories": ["business", "lifestyle", "health"],
+  "lang": "sv-SE",
+  "dir": "ltr",
+  "categories": ["business", "lifestyle", "health", "beauty", "professional"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "capture_links": "existing-client-navigate",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "protocol_handlers": [
+    {
+      "protocol": "web+barberaria",
+      "url": "/?booking=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "text/calendar": [".ics"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "screenshots": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Barberaria 96 booking interface"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512", 
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Mobile booking experience"
+    }
+  ],
   "icons": [
     {
       "src": "/logo.png",
@@ -67,6 +118,12 @@
     },
     {
       "src": "/logo.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any"
@@ -74,6 +131,12 @@
     {
       "src": "/logo.png", 
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
     },
@@ -133,6 +196,12 @@
     },
     {
       "src": "/logo.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/logo.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable"
@@ -142,6 +211,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
@@ -149,12 +224,13 @@
       "name": "Boka tid",
       "short_name": "Boka",
       "description": "Boka din tid hos Barberaria 96",
-      "url": "/",
+      "url": "/?action=book",
       "icons": [
         {
           "src": "/logo.png",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/png",
+          "purpose": "any"
         }
       ]
     },
@@ -167,9 +243,44 @@
         {
           "src": "/logo.png",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/png",
+          "purpose": "any"
         }
       ]
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt", 
+      "description": "Kontakta Barberaria 96",
+      "url": "/?action=contact",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "Priser",
+      "short_name": "Priser",
+      "description": "Se våra priser och tjänster", 
+      "url": "/?action=prices",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96",
+          "type": "image/png",
+          "purpose": "any"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://barbareria96.netlify.app/manifest.json"
     }
   ]
 }

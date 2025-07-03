@@ -35,7 +35,7 @@
 [build.environment]
   NODE_VERSION = "18"
 
-# Headers for security and performance
+# Enhanced headers for PWA optimization
 [[headers]]
   for = "/*"
   [headers.values]
@@ -43,6 +43,29 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(self), payment=(self)"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Cross-Origin-Embedder-Policy = "credentialless"
+    Cross-Origin-Opener-Policy = "same-origin"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+    Cache-Control = "public, max-age=86400"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Content-Type = "application/javascript; charset=utf-8"
+    Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/offline.html"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
 
 [[headers]]
   for = "/assets/*"
@@ -53,23 +76,64 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
 
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
 
 [[headers]]
   for = "/*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "font/woff2"
 
 [[headers]]
-  for = "/sw.js"
+  for = "/*.woff"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "font/woff"
 
 [[headers]]
-  for = "/manifest.json"
+  for = "/*.ttf"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "font/ttf"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/png"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/jpeg"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/jpeg"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/svg+xml"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/webp"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "image/x-icon"
