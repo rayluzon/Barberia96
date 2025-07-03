@@ -245,16 +245,18 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
   return (
     <AnimatePresence>
       <motion.div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex flex-col"
+        className="iframe-modal fixed inset-0 bg-black bg-opacity-50 flex flex-col"
         variants={modalVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
+        style={{ zIndex: 999999 }}
       >
         {/* Minimized Header with enhanced animation */}
         <motion.div 
-          className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-4 py-2 flex items-center justify-between shadow-lg relative z-[10000] h-12 flex-shrink-0"
+          className="iframe-modal-header bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white px-4 py-2 flex items-center justify-between shadow-lg relative h-12 flex-shrink-0"
           variants={headerVariants}
+          style={{ zIndex: 1000000 }}
         >
           <div className="flex items-center min-w-0 flex-1">
             <motion.img 
@@ -321,12 +323,13 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
         {/* Full-Screen Content Area with enhanced animations */}
         <motion.div 
           ref={containerRef}
-          className="flex-1 relative bg-white overflow-hidden iframe-container"
+          className="iframe-container flex-1 relative bg-white overflow-hidden"
           onTouchStart={handleTouchStart}
           style={{ 
             height: 'calc(100vh - 48px)',
             maxHeight: 'calc(100vh - 48px)',
-            minHeight: 'calc(100vh - 48px)'
+            minHeight: 'calc(100vh - 48px)',
+            zIndex: 999998
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -494,6 +497,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
                 height: '100%',
                 minHeight: '100%',
                 maxHeight: '100%',
+                zIndex: 999997,
                 // iOS Safari optimizations
                 WebkitOverflowScrolling: 'touch',
                 overflow: 'auto'
