@@ -2,6 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CRITICAL Z-INDEX HIERARCHY - INDUSTRY LEADING PWA STANDARDS */
+
+/* 1. IFRAME MODAL - ABSOLUTE HIGHEST PRIORITY (Level 1000000+) */
+.iframe-modal {
+  z-index: 2147483647 !important; /* Maximum possible z-index value */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  isolation: isolate;
+  pointer-events: auto !important;
+}
+
+.iframe-modal-header {
+  z-index: 2147483646 !important; /* Second highest possible */
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+.iframe-container {
+  z-index: 2147483645 !important; /* Third highest */
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+.iframe-container iframe {
+  z-index: 2147483644 !important; /* Fourth highest */
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* 2. NAVIGATION - SECOND PRIORITY (Level 100000+) */
+nav,
+.bottom-navigation,
+.navigation,
+.nav-container,
+[role="navigation"] {
+  z-index: 100000 !important;
+  position: relative !important;
+}
+
+/* 3. MODALS & OVERLAYS - THIRD PRIORITY (Level 10000+) */
+.modal,
+.overlay,
+.popup,
+.dropdown,
+[role="dialog"],
+[role="alertdialog"] {
+  z-index: 10000 !important;
+}
+
+/* 4. TOOLTIPS & NOTIFICATIONS - FOURTH PRIORITY (Level 1000+) */
+.tooltip,
+.notification,
+.toast,
+.alert {
+  z-index: 1000 !important;
+}
+
+/* 5. REGULAR CONTENT - BASE LEVEL */
+.content,
+main,
+section,
+article {
+  z-index: 1 !important;
+}
+
 /* Enhanced iframe modal styles for mobile optimization */
 body.iframe-modal-open {
   overflow: hidden !important;
@@ -13,24 +81,6 @@ body.iframe-modal-open {
   touch-action: none;
   /* Prevent any scrolling */
   overscroll-behavior: none;
-}
-
-/* CRITICAL: Maximum z-index for iframe modal to ensure it's always on top */
-.iframe-modal {
-  z-index: 999999 !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  /* Ensure it's above everything else */
-  isolation: isolate;
-}
-
-/* Ensure iframe modal header stays on top of iframe content */
-.iframe-modal-header {
-  z-index: 1000000 !important;
-  position: relative !important;
 }
 
 /* Mobile-first iframe optimizations - Ensure iframe reaches bottom */
@@ -57,8 +107,6 @@ body.iframe-modal-open {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* Maximum z-index for container */
-  z-index: 999998 !important;
 }
 
 .iframe-container iframe {
@@ -88,7 +136,6 @@ body.iframe-modal-open {
   overflow-y: auto !important;
   overflow-x: hidden !important;
   /* High z-index for iframe content */
-  z-index: 999997 !important;
   position: relative !important;
 }
 
@@ -300,17 +347,13 @@ iframe[title] {
   }
 }
 
-/* Ensure iframe modal is always above everything else */
-.iframe-modal * {
-  z-index: inherit !important;
-}
-
-/* Override any potential conflicting z-index values */
+/* CRITICAL: Override any potential conflicting z-index values */
 .iframe-modal,
+.iframe-modal *,
 .iframe-modal > *,
 .iframe-modal .iframe-container,
 .iframe-modal .iframe-container iframe {
-  z-index: 999999 !important;
+  z-index: inherit !important;
 }
 
 /* Ensure backdrop is below modal content but above everything else */
@@ -322,5 +365,57 @@ iframe[title] {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 999998 !important;
+  z-index: 2147483643 !important; /* Below iframe content */
+}
+
+/* PWA OPTIMIZATION: Enhanced performance and accessibility */
+* {
+  /* Hardware acceleration for smooth animations */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Optimize rendering */
+  backface-visibility: hidden;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* PWA: Optimize for different display modes */
+@media (display-mode: standalone) {
+  body {
+    /* PWA standalone mode optimizations */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media (display-mode: minimal-ui) {
+  /* Minimal UI mode optimizations */
+  .iframe-container {
+    height: calc(100vh - 48px) !important;
+  }
+}
+
+@media (display-mode: fullscreen) {
+  /* Fullscreen mode optimizations */
+  .iframe-container {
+    height: calc(100vh - 48px) !important;
+  }
+}
+
+/* PWA: Enhanced touch and gesture support */
+.touch-optimized {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* PWA: Optimize for window controls overlay */
+@media (display-mode: window-controls-overlay) {
+  .iframe-modal-header {
+    /* Account for window controls */
+    padding-left: env(titlebar-area-x, 0);
+    padding-right: env(titlebar-area-width, 100%);
+  }
 }
