@@ -15,6 +15,24 @@ body.iframe-modal-open {
   overscroll-behavior: none;
 }
 
+/* CRITICAL: Maximum z-index for iframe modal to ensure it's always on top */
+.iframe-modal {
+  z-index: 999999 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  /* Ensure it's above everything else */
+  isolation: isolate;
+}
+
+/* Ensure iframe modal header stays on top of iframe content */
+.iframe-modal-header {
+  z-index: 1000000 !important;
+  position: relative !important;
+}
+
 /* Mobile-first iframe optimizations - Ensure iframe reaches bottom */
 .iframe-container {
   /* Ensure iframe container takes exact calculated space */
@@ -39,6 +57,8 @@ body.iframe-modal-open {
   position: relative;
   display: flex;
   flex-direction: column;
+  /* Maximum z-index for container */
+  z-index: 999998 !important;
 }
 
 .iframe-container iframe {
@@ -67,6 +87,9 @@ body.iframe-modal-open {
   /* Ensure iframe content can scroll */
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  /* High z-index for iframe content */
+  z-index: 999997 !important;
+  position: relative !important;
 }
 
 /* iOS Safari specific iframe optimizations */
@@ -223,16 +246,6 @@ iframe[title] {
   animation-iteration-count: infinite;
 }
 
-/* High z-index for iframe modal to ensure it overlaps everything */
-.iframe-modal {
-  z-index: 9999 !important;
-}
-
-/* Ensure iframe modal header stays on top */
-.iframe-modal-header {
-  z-index: 10000 !important;
-}
-
 /* Mobile-specific touch optimizations */
 @media (hover: none) and (pointer: coarse) {
   /* Touch devices */
@@ -285,4 +298,29 @@ iframe[title] {
     min-height: calc(100vh - 48px) !important;
     max-height: calc(100vh - 48px) !important;
   }
+}
+
+/* Ensure iframe modal is always above everything else */
+.iframe-modal * {
+  z-index: inherit !important;
+}
+
+/* Override any potential conflicting z-index values */
+.iframe-modal,
+.iframe-modal > *,
+.iframe-modal .iframe-container,
+.iframe-modal .iframe-container iframe {
+  z-index: 999999 !important;
+}
+
+/* Ensure backdrop is below modal content but above everything else */
+.iframe-modal::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999998 !important;
 }
