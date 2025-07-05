@@ -99,6 +99,13 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
   const handleIframeLoad = () => {
     setIsLoading(false);
     setHasError(false);
+    
+    // DEBUG: Log successful iframe load
+    console.log('✅ BokaDirekt iframe loaded successfully!');
+    console.log('📍 URL:', bookingUrl);
+    console.log('🌐 User Agent:', navigator.userAgent);
+    console.log('📱 Platform:', navigator.platform);
+    
     if (loadTimeoutRef.current) {
       clearTimeout(loadTimeoutRef.current);
     }
@@ -114,6 +121,14 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
   const handleIframeError = () => {
     setIsLoading(false);
     setHasError(true);
+    
+    // DEBUG: Log iframe error details
+    console.error('❌ BokaDirekt iframe failed to load!');
+    console.error('📍 URL:', bookingUrl);
+    console.error('🌐 User Agent:', navigator.userAgent);
+    console.error('📱 Platform:', navigator.platform);
+    console.error('🔍 Iframe element:', iframeRef.current);
+    
     if (loadTimeoutRef.current) {
       clearTimeout(loadTimeoutRef.current);
     }
@@ -157,6 +172,13 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
   // Handle postMessage - Accept ALL messages (no origin restrictions)
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
+      // DEBUG: Log all postMessage events
+      console.log('📨 PostMessage received:', {
+        origin: event.origin,
+        data: event.data,
+        source: event.source
+      });
+      
       // REMOVED: No origin restrictions - accept all messages
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
@@ -430,6 +452,18 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             <motion.iframe
               ref={iframeRef}
               src={bookingUrl}
+              // DEBUG: Add onLoad handler to log more details
+              onLoad={(e) => {
+                console.log('🎯 Iframe onLoad event fired');
+                console.log('📄 Iframe document:', e.currentTarget.contentDocument);
+                console.log('🔗 Iframe window:', e.currentTarget.contentWindow);
+                handleIframeLoad();
+              }}
+              onError={(e) => {
+                console.error('💥 Iframe onError event fired');
+                console.error('🚨 Error details:', e);
+                handleIframeError();
+              }}
               className="w-full h-full border-0 bg-white block"
               // REMOVED ALL SANDBOX RESTRICTIONS - MAXIMUM PERMISSIONS
               // sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"

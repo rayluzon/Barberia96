@@ -102,6 +102,10 @@ const BookingDropdown: React.FC = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
   const handleServiceSelect = (service: Service) => {
+    // DEBUG: Log service selection
+    console.log('🎯 Service selected:', service);
+    console.log('🔗 Booking URL:', service.bookingUrl);
+    
     setSelectedService(service);
     setIsOpen(false);
   };

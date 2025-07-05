@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 
+// Import debug helpers
+import './utils/debugHelpers';
+
 // Initialize console protection
 import './utils/consoleProtection';
 
