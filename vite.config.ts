@@ -20,9 +20,13 @@ export default defineConfig({
                 maxEntries: 30,
                 maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
               },
-              cacheKeyWillBeUsed: async ({ request }) => {
-                return `${request.url}?version=1`;
-              }
+              plugins: [
+                {
+                  cacheKeyWillBeUsed: async ({ request }: { request: Request }) => {
+                    return `${request.url}?version=1`;
+                  }
+                }
+              ]
             }
           },
           {
@@ -48,7 +52,7 @@ export default defineConfig({
               networkTimeoutSeconds: 10,
               plugins: [
                 {
-                  cacheKeyWillBeUsed: async ({ request }) => {
+                  cacheKeyWillBeUsed: async ({ request }: { request: Request }) => {
                     return `${request.url}?cache-bust=${Date.now()}`;
                   }
                 }
@@ -122,7 +126,6 @@ export default defineConfig({
           client_mode: 'navigate-existing'
         },
         handle_links: 'preferred',
-        capture_links: 'existing-client-navigate',
         display_override: ['window-controls-overlay', 'standalone', 'minimal-ui'],
         protocol_handlers: [
           {
