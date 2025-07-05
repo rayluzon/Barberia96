@@ -535,11 +535,14 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             <motion.iframe
               ref={iframeRef}
               src={bookingUrl}
-              className="w-full border-0 bg-white block"
+              className="w-full h-full border-0 bg-white block"
               style={{ 
                 height: '100%',
                 minHeight: '100%',
                 maxHeight: '100%',
+                width: '100%',
+                minWidth: '100%',
+                maxWidth: '100%',
                 zIndex: 2147483644,
                 // iOS Safari optimizations
                 WebkitOverflowScrolling: 'touch',
@@ -562,15 +565,18 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
                 // Ensure iframe renders properly on Apple devices
                 WebkitAppearance: 'none',
                 appearance: 'none',
-                position: 'relative'
+                position: 'relative',
+                // Fix black screen issues
+                backgroundColor: 'white',
+                display: 'block'
               }}
               // Enhanced security sandbox for iOS compatibility
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"
               scrolling="auto"
               onLoad={handleIframeLoad}
               onError={handleIframeError}
               title={`Secure booking - ${serviceName}`}
-              loading="lazy"
+              loading="eager"
               // iOS Safari specific attributes
               allow="payment; geolocation"
               referrerPolicy="strict-origin-when-cross-origin"

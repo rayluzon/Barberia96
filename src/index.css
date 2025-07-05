@@ -165,6 +165,9 @@ body.iframe-modal-open {
   /* Prevent iOS Safari from adding borders */
   border: none !important;
   outline: none !important;
+  /* Fix black screen issues */
+  background-color: white !important;
+  background: white !important;
   /* Optimize rendering */
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -186,6 +189,9 @@ body.iframe-modal-open {
   overflow-x: hidden !important;
   /* High z-index for iframe content */
   position: relative !important;
+  /* Force iframe visibility */
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* iOS Safari specific iframe optimizations */
