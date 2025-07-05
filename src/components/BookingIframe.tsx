@@ -535,7 +535,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             <motion.iframe
               ref={iframeRef}
               src={bookingUrl}
-              className="w-full h-full border-0 bg-white block"
+              className="w-full h-full border-none bg-white block"
               style={{ 
                 height: '100%',
                 minHeight: '100%',
@@ -544,44 +544,14 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
                 minWidth: '100%',
                 maxWidth: '100%',
                 zIndex: 2147483644,
-                // iOS Safari optimizations
-                WebkitOverflowScrolling: 'touch',
-                overflow: 'auto',
-                // Apple/iOS specific iframe positioning
-                WebkitTransform: 'translate3d(0, 0, 0)',
-                transform: 'translate3d(0, 0, 0)',
-                WebkitBackfaceVisibility: 'hidden',
-                backfaceVisibility: 'hidden',
-                willChange: 'transform, contents',
-                // Force iframe above Apple system UI
-                WebkitPerspective: '1000px',
-                perspective: '1000px',
-                // Prevent Apple Safari touch interference
-                WebkitTouchCallout: 'none',
-                WebkitUserSelect: 'none',
-                touchAction: 'manipulation',
-                // Force iframe to capture touch events
-                pointerEvents: 'auto',
-                // Ensure iframe renders properly on Apple devices
-                WebkitAppearance: 'none',
-                appearance: 'none',
-                position: 'relative',
-                // Fix black screen issues
-                backgroundColor: 'white',
-                display: 'block'
+                border: 'none',
+                outline: 'none',
+                backgroundColor: '#ffffff'
               }}
-              // Enhanced security sandbox for iOS compatibility
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"
-              scrolling="auto"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
               onLoad={handleIframeLoad}
               onError={handleIframeError}
               title={`Secure booking - ${serviceName}`}
-              loading="eager"
-              // iOS Safari specific attributes
-              allow="payment; geolocation"
-              referrerPolicy="strict-origin-when-cross-origin"
-              // Accessibility
-              aria-label={`Booking form for ${serviceName}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ duration: 0.5 }}
