@@ -131,7 +131,7 @@ const MainPage: React.FC = () => {
 
   return (
     <motion.div 
-      className="min-h-screen bg-gray-50 flex flex-col"
+      className="h-screen bg-gray-50 flex flex-col overflow-hidden"
       variants={pageVariants}
       initial="hidden"
       animate="visible"
@@ -192,7 +192,7 @@ const MainPage: React.FC = () => {
       </AnimatePresence>
 
       {/* Content Area */}
-      <div className={`flex-1 pb-20 overflow-y-auto ${activeTab === 'boka' ? '' : 'pt-0'}`}>
+      <div className={`flex-1 overflow-y-auto ${activeTab === 'boka' ? '' : 'pt-0'}`} style={{ paddingBottom: '80px' }}>
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -207,22 +207,10 @@ const MainPage: React.FC = () => {
       </div>
 
       {/* Bottom Navigation */}
-      <motion.div
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ 
-          type: "spring",
-          stiffness: 300,
-          damping: 30,
-          duration: 0.6,
-          delay: 0.2
-        }}
-      >
-        <BottomNavigation 
-          activeTab={activeTab} 
-          onTabChange={setActiveTab}
-        />
-      </motion.div>
+      <BottomNavigation 
+        activeTab={activeTab} 
+        onTabChange={setActiveTab}
+      />
     </motion.div>
   );
 };

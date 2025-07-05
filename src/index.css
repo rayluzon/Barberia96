@@ -273,6 +273,7 @@ nav,
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
+  height: 80px !important;
   z-index: 100000 !important;
   /* Ensure navigation stays at bottom on all devices */
   -webkit-transform: translateZ(0);
@@ -281,6 +282,21 @@ nav,
   will-change: transform;
   /* Prevent any interference */
   isolation: isolate;
+  /* Ensure no scrolling is needed */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure body doesn't have extra height */
+body, html {
+  height: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Main app container should be full height */
+#root {
+  height: 100vh !important;
+  overflow: hidden !important;
 }
 
 /* 3. MODALS & OVERLAYS - THIRD PRIORITY (Level 10000+) */

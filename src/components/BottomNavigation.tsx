@@ -135,26 +135,22 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
   };
 
   return (
-    <motion.div 
-      className="fixed bottom-0 left-0 right-0 bottom-navigation"
+    <div 
+      className="fixed bottom-0 left-0 right-0 bottom-navigation bg-white/95 backdrop-blur-sm border-t border-gray-200"
       style={{ 
         zIndex: 100000,
         position: 'fixed',
         bottom: 0,
         left: 0,
         right: 0,
-        width: '100%'
+        width: '100%',
+        height: '80px'
       }}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
     >
       {/* Clean background */}
-      <div className="relative">
-        <div className="absolute inset-0 bg-white/95 backdrop-blur-sm border-t border-gray-200" />
-        
+      <div className="relative h-full">
         {/* Navigation container */}
-        <div className="relative flex max-w-4xl mx-auto px-4 py-3">
+        <div className="relative flex max-w-4xl mx-auto px-4 py-3 h-full items-center">
           
           {/* Om Oss */}
           <motion.div className="flex-1 flex justify-center">
@@ -283,7 +279,7 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
