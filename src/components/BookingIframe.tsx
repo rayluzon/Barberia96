@@ -466,14 +466,14 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
               }}
               className="w-full h-full border-0 bg-white block"
               // REMOVED ALL SANDBOX RESTRICTIONS - MAXIMUM PERMISSIONS
-              // sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"
+              sandbox=""
               scrolling="auto"
               onLoad={handleIframeLoad}
               onError={handleIframeError}
               title={`Säker bokning - ${serviceName}`}
               loading="eager"
               // MAXIMUM PERMISSIONS - ALL FEATURES ALLOWED
-              allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; cross-origin-isolated; display-capture; document-domain; encrypted-media; execution-while-not-rendered; execution-while-out-of-viewport; fullscreen; geolocation; gyroscope; keyboard-map; magnetometer; microphone; midi; navigation-override; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; sync-xhr; usb; web-share; xr-spatial-tracking"
+              allow="*"
               // REMOVED REFERRER RESTRICTIONS
               // referrerPolicy="strict-origin-when-cross-origin"
               aria-label={`Bokningsformulär för ${serviceName}`}
@@ -481,10 +481,7 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ duration: 0.5 }}
               // ADDITIONAL PERMISSIVE ATTRIBUTES
-              allowFullScreen={true}
-              allowPaymentRequest={true}
               // REMOVED SECURITY RESTRICTIONS
-              credentialless={true}
               style={{
                 // FORCE MAXIMUM COMPATIBILITY
                 border: 'none',
