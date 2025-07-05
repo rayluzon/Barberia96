@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import BottomNavigation from './BottomNavigation';
-import BookingView from './BookingView';
 import InfoView from './InfoView';
 import { businessConfig } from '../config/business';
 
@@ -23,11 +22,35 @@ const MainPage: React.FC = () => {
   const renderContent = () => {
     switch (activeTab) {
       case 'boka':
-        return <BookingView />;
+        return (
+          <motion.div 
+            className="p-4 max-w-4xl mx-auto min-h-screen bg-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Completely blank white section */}
+            <div className="bg-white min-h-[80vh] rounded-xl">
+              {/* Empty - ready for new content */}
+            </div>
+          </motion.div>
+        );
       case 'info':
         return <InfoView />;
       default:
-        return <BookingView />;
+        return (
+          <motion.div 
+            className="p-4 max-w-4xl mx-auto min-h-screen bg-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Completely blank white section */}
+            <div className="bg-white min-h-[80vh] rounded-xl">
+              {/* Empty - ready for new content */}
+            </div>
+          </motion.div>
+        );
     }
   };
 

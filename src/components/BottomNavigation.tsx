@@ -137,7 +137,14 @@ const BottomNavigation: React.FC<BottomNavigationProps> = ({
   return (
     <motion.div 
       className="fixed bottom-0 left-0 right-0 bottom-navigation"
-      style={{ zIndex: 100000 }} // Second highest priority after iframe
+      style={{ 
+        zIndex: 100000,
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        width: '100%'
+      }}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
