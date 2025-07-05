@@ -35,20 +35,21 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
     // Prevent body scroll when iframe modal is open - Apple device specific
     document.body.classList.add('apple-modal-open');
     
-    // iOS Safari specific: Prevent zoom on input focus
+    // iOS Safari specific: Allow all zoom and interactions
     const viewport = document.querySelector('meta[name=viewport]');
     const originalContent = viewport?.getAttribute('content');
     if (viewport) {
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+      // Remove all viewport restrictions for maximum compatibility
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
     }
     
-    // Set a timeout to detect if iframe fails to load (iOS Safari compatibility)
+    // Extended timeout for slow connections
     loadTimeoutRef.current = setTimeout(() => {
       if (isLoading) {
         setHasError(true);
         setIsLoading(false);
       }
-    }, 15000); // 15 second timeout for iOS
+    }, 30000); // 30 second timeout
 
     // Calculate and set proper heights for Apple devices
     const updateHeights = () => {
@@ -153,12 +154,10 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
     }
   };
 
-  // Handle postMessage for dynamic height and iOS compatibility
+  // Handle postMessage - Accept ALL messages (no origin restrictions)
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // Security: Only accept messages from booking system domain
-      if (!event.origin.includes(new URL(bookingUrl).hostname)) return;
-      
+      // REMOVED: No origin restrictions - accept all messages
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
         
@@ -181,10 +180,10 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
     return () => window.removeEventListener('message', handleMessage);
   }, [bookingUrl]);
 
-  // iOS Safari specific touch handling
+  // iOS Safari specific touch handling - Allow all touch events
   const handleTouchStart = (e: React.TouchEvent) => {
-    // Prevent iOS Safari from interfering with iframe touch events
-    e.stopPropagation();
+    // Allow all touch events to pass through
+    // e.stopPropagation(); // REMOVED
   };
 
   return (
@@ -426,24 +425,55 @@ const BookingIframe: React.FC<BookingIframeProps> = ({ bookingUrl, serviceName, 
             )}
           </AnimatePresence>
 
-          {/* Full-Screen Iframe optimized for Apple devices */}
+          {/* MAXIMALLY PERMISSIVE IFRAME - ALL RESTRICTIONS REMOVED */}
           {isOnline && (
             <motion.iframe
               ref={iframeRef}
               src={bookingUrl}
               className="w-full h-full border-0 bg-white block"
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"
+              // REMOVED ALL SANDBOX RESTRICTIONS - MAXIMUM PERMISSIONS
+              // sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads"
               scrolling="auto"
               onLoad={handleIframeLoad}
               onError={handleIframeError}
               title={`Säker bokning - ${serviceName}`}
               loading="eager"
-              allow="payment; geolocation"
-              referrerPolicy="strict-origin-when-cross-origin"
+              // MAXIMUM PERMISSIONS - ALL FEATURES ALLOWED
+              allow="accelerometer; ambient-light-sensor; autoplay; battery; camera; cross-origin-isolated; display-capture; document-domain; encrypted-media; execution-while-not-rendered; execution-while-out-of-viewport; fullscreen; geolocation; gyroscope; keyboard-map; magnetometer; microphone; midi; navigation-override; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; sync-xhr; usb; web-share; xr-spatial-tracking"
+              // REMOVED REFERRER RESTRICTIONS
+              // referrerPolicy="strict-origin-when-cross-origin"
               aria-label={`Bokningsformulär för ${serviceName}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: isLoading ? 0 : 1 }}
               transition={{ duration: 0.5 }}
+              // ADDITIONAL PERMISSIVE ATTRIBUTES
+              allowFullScreen={true}
+              allowPaymentRequest={true}
+              // REMOVED SECURITY RESTRICTIONS
+              credentialless={true}
+              style={{
+                // FORCE MAXIMUM COMPATIBILITY
+                border: 'none',
+                outline: 'none',
+                width: '100%',
+                height: '100%',
+                minHeight: '100%',
+                maxHeight: '100%',
+                display: 'block',
+                backgroundColor: 'white',
+                // REMOVE ALL WEBKIT RESTRICTIONS
+                WebkitAppearance: 'none',
+                appearance: 'none',
+                // ALLOW ALL TOUCH INTERACTIONS
+                touchAction: 'auto',
+                WebkitTouchCallout: 'default',
+                WebkitUserSelect: 'auto',
+                userSelect: 'auto',
+                // MAXIMUM PERFORMANCE
+                willChange: 'auto',
+                transform: 'none',
+                WebkitTransform: 'none'
+              }}
             />
           )}
         </motion.div>
