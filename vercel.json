@@ -52,32 +52,6 @@
       ]
     },
     {
-      "source": "/favicon/*.:ext(png|ico)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "Content-Type",
-          "value": "image/png"
-        }
-      ]
-    },
-    {
-      "source": "/favicon/*.ico",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "Content-Type",
-          "value": "image/x-icon"
-        }
-      ]
-    },
-    {
       "source": "/:path*.:ext(png|jpg|jpeg|gif|svg|ico|webp)",
       "headers": [
         {
