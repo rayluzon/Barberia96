@@ -100,14 +100,12 @@ export default defineConfig({
         'favicon.ico',
         'offline.html',
         'logo.png',
-        'favicon/favicon-16x16.png',
-        'favicon/favicon-32x32.png',
         'favicon/favicon-96x96.png',
-        'favicon/android-icon-36x36.png',
         'favicon/android-icon-48x48.png',
         'favicon/android-icon-72x72.png',
         'favicon/android-icon-96x96.png',
         'favicon/android-icon-144x144.png',
+        'favicon/apple-icon-152x152.png',
         'favicon/android-icon-192x192.png',
         'favicon/1024x1024.png',
         'favicon/apple-icon-*.png',
@@ -231,26 +229,14 @@ export default defineConfig({
             type: 'image/png',
             purpose: 'any'
           },
+          {
+            src: '/favicon/1024x1024.png', 
+            sizes: '1024x1024',
+            type: 'image/png',
+            purpose: 'any'
+          },
           
           // Maskable purpose icons (separate entries for PWA Builder compliance)
-          {
-            src: '/favicon/favicon-16x16.png', 
-            sizes: '16x16',
-            type: 'image/png',
-            purpose: 'maskable'
-          },
-          {
-            src: '/favicon/favicon-32x32.png', 
-            sizes: '32x32',
-            type: 'image/png',
-            purpose: 'maskable'
-          },
-          {
-            src: '/favicon/android-icon-36x36.png',
-            sizes: '36x36', 
-            type: 'image/png',
-            purpose: 'maskable'
-          },
           {
             src: '/favicon/android-icon-48x48.png', 
             sizes: '48x48',
@@ -270,6 +256,12 @@ export default defineConfig({
             purpose: 'maskable'
           },
           {
+            src: '/favicon/apple-icon-152x152.png', 
+            sizes: '152x152',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
             src: '/favicon/android-icon-144x144.png', 
             sizes: '144x144',
             type: 'image/png',
@@ -284,6 +276,12 @@ export default defineConfig({
           {
             src: '/favicon/1024x1024.png', 
             sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
+          },
+          {
+            src: '/favicon/1024x1024.png', 
+            sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
           }
