@@ -4,6 +4,188 @@
 
 /* CRITICAL Z-INDEX HIERARCHY - INDUSTRY LEADING PWA STANDARDS */
 
+/* APPLE DEVICE FULL OVERLAY STYLES */
+.apple-fullscreen-modal {
+  /* Force above all Apple Safari UI elements */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483647 !important; /* Maximum possible z-index */
+  /* iOS Safari specific positioning */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  /* Force hardware acceleration on Apple devices */
+  -webkit-perspective: 1000 !important;
+  perspective: 1000 !important;
+  /* Ensure modal appears above all Apple system UI */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force modal to capture all touch events */
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  pointer-events: auto !important;
+  /* Prevent Apple Safari from interfering */
+  will-change: transform, opacity !important;
+  isolation: isolate !important;
+}
+
+.apple-modal-header {
+  /* Force header above iframe on Apple devices */
+  z-index: 2147483646 !important;
+  position: relative !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  isolation: isolate !important;
+  pointer-events: auto !important;
+}
+
+.apple-iframe-container {
+  /* Ensure iframe container takes exact space on Apple devices */
+  z-index: 2147483645 !important;
+  position: relative !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  pointer-events: auto !important;
+  /* Force exact height calculations on Apple devices */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.apple-iframe-container iframe {
+  /* iOS Safari specific iframe optimizations */
+  z-index: 2147483644 !important;
+  position: relative !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overflow: auto !important;
+  /* Force hardware acceleration */
+  -webkit-perspective: 1000px !important;
+  perspective: 1000px !important;
+  /* Ensure iframe renders above Apple Safari UI */
+  will-change: transform, contents !important;
+  /* Prevent Apple Safari from interfering with iframe */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force iframe to capture touch events */
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  /* Flex properties for exact sizing on Apple devices */
+  flex: 1 !important;
+  flex-shrink: 0 !important;
+  flex-grow: 1 !important;
+}
+
+/* iOS Safari specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari detected */
+  .apple-fullscreen-modal {
+    /* Enhanced iOS Safari modal positioning */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    /* Force above all iOS Safari UI */
+    z-index: 2147483647 !important;
+    /* Hardware acceleration for iOS */
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    /* Prevent iOS Safari interference */
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    /* Force new layer on iOS */
+    will-change: transform, opacity !important;
+    /* Ensure modal captures all touch events */
+    touch-action: none !important;
+    -webkit-touch-callout: none !important;
+  }
+  
+  .apple-iframe-container {
+    /* Fix iOS Safari iframe height issues */
+    height: calc(100vh - 44px) !important;
+    min-height: calc(100vh - 44px) !important;
+    max-height: calc(100vh - 44px) !important;
+    /* Prevent rubber band scrolling */
+    overscroll-behavior: none !important;
+    /* Enhanced iOS Safari container fixes */
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    /* Ensure container stays in place */
+    will-change: transform !important;
+    /* Prevent iOS Safari scrolling issues */
+    -webkit-overflow-scrolling: touch !important;
+    overflow: hidden !important;
+  }
+  
+  .apple-iframe-container iframe {
+    /* iOS Safari specific height fix - exact sizing */
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    /* Prevent iOS Safari scrolling issues */
+    -webkit-overflow-scrolling: touch !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    /* Enhanced iOS Safari iframe fixes */
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    /* Ensure iframe renders above iOS Safari UI */
+    will-change: transform, contents !important;
+    /* Prevent iOS Safari from interfering with iframe */
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    /* Force iframe to capture touch events */
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+  }
+}
+
+/* Enhanced body lock for Apple devices */
+body.apple-modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+  /* iOS Safari specific fixes */
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: none !important;
+  /* Prevent any scrolling */
+  overscroll-behavior: none !important;
+  /* Apple/iOS specific body fixes when modal is open */
+  -webkit-transform: translateZ(0) !important;
+  transform: translateZ(0) !important;
+  /* Prevent Apple Safari from showing address bar */
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  /* Force full viewport usage on Apple devices */
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
 /* 1. IFRAME MODAL - ABSOLUTE HIGHEST PRIORITY (Level 1000000+) */
 .iframe-modal {
   z-index: 2147483647 !important; /* Maximum possible z-index value */
