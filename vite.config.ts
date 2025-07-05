@@ -97,9 +97,9 @@ export default defineConfig({
         offlineGoogleAnalytics: true
       },
       includeAssets: [
-        'Favicon/favicon.ico',
-        'Favicon/*.png',
-        'Favicon/*.ico',
+        'favicon/favicon.ico',
+        'favicon/*.png',
+        'favicon/*.ico',
         'offline.html',
         'logo.png',
         'staff/*.png',
@@ -169,158 +169,158 @@ export default defineConfig({
         icons: [
           // Any purpose icons
           {
-            src: '/Favicon/favicon-16x16.png',
+            src: '/favicon/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/favicon-32x32.png',
+            src: '/favicon/favicon-32x32.png',
             sizes: '32x32',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-48x48.png',
+            src: '/favicon/android-icon-48x48.png',
             sizes: '48x48',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-72x72.png',
+            src: '/favicon/android-icon-72x72.png',
             sizes: '72x72',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/favicon-96x96.png',
+            src: '/favicon/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-144x144.png',
+            src: '/favicon/android-icon-144x144.png',
             sizes: '128x128',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-144x144.png',
+            src: '/favicon/android-icon-144x144.png',
             sizes: '144x144',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/apple-icon-152x152.png',
+            src: '/favicon/apple-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/android-icon-192x192.png',
+            src: '/favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '256x256',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '384x384',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/1024x1024.png', 
+            src: '/favicon/1024x1024.png', 
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'any'
           },
           // Maskable purpose icons (separate entries)
           {
-            src: '/Favicon/favicon-16x16.png',
+            src: '/favicon/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/favicon-32x32.png',
+            src: '/favicon/favicon-32x32.png',
             sizes: '32x32',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-48x48.png',
+            src: '/favicon/android-icon-48x48.png',
             sizes: '48x48',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-72x72.png',
+            src: '/favicon/android-icon-72x72.png',
             sizes: '72x72',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/favicon-96x96.png',
+            src: '/favicon/favicon-96x96.png',
             sizes: '96x96',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-144x144.png',
+            src: '/favicon/android-icon-144x144.png',
             sizes: '128x128',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-144x144.png',
+            src: '/favicon/android-icon-144x144.png',
             sizes: '144x144',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/apple-icon-152x152.png',
+            src: '/favicon/apple-icon-152x152.png',
             sizes: '152x152',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/android-icon-192x192.png',
+            src: '/favicon/android-icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '256x256',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '384x384',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/1024x1024.png', 
+            src: '/favicon/1024x1024.png', 
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
           },
           {
-            src: '/Favicon/1024x1024.png',
+            src: '/favicon/1024x1024.png',
             sizes: '1024x1024',
             type: 'image/png',
             purpose: 'maskable'
@@ -334,7 +334,7 @@ export default defineConfig({
             url: '/?action=book',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/favicon/favicon-96x96.png',
                 sizes: '96x96',
                 type: 'image/png',
                 purpose: 'any'
@@ -348,7 +348,7 @@ export default defineConfig({
             url: '/om-oss',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/favicon/favicon-96x96.png',
                 sizes: '96x96',
                 type: 'image/png',
                 purpose: 'any'
@@ -362,7 +362,7 @@ export default defineConfig({
             url: '/?action=contact',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/favicon/favicon-96x96.png',
                 sizes: '96x96',
                 type: 'image/png',
                 purpose: 'any'
@@ -376,7 +376,7 @@ export default defineConfig({
             url: '/?action=prices',
             icons: [
               {
-                src: '/Favicon/favicon-96x96.png',
+                src: '/favicon/favicon-96x96.png',
                 sizes: '96x96',
                 type: 'image/png',
                 purpose: 'any'
